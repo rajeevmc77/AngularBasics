@@ -8,8 +8,13 @@
   <label>Password: <input [(ngModel)]="password" placeholder="name" type="password"/> </label>
   </div>
   <div>  <input   type="button" value="submit" (click)="submitRequest()"/> </div>
-
-
+</div>
+<div>
+<ul >
+  <li *ngFor="let usr of usrs" >
+    <span >{{usr.userName}}</span> {{usr.password}}
+  </li>
+</ul>
 </div>
 
 
