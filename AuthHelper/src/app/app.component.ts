@@ -13,7 +13,7 @@ export class AppComponent {
   password = '';
   usrs: AuthUser[];
   responseStatus: string;
-  responseStatus = '';
+  // responseStatus = '';
 
   constructor(private service: AuthApiService) { }
 
@@ -21,9 +21,11 @@ export class AppComponent {
     let usr  = new AuthUser();
     usr.userName = this.userName;
     usr.password = this.password;
+    let users;
 
     this.service.getContacts().subscribe( resp => {
-     this.usrs = resp.users.map(item => {
+      users = resp['users'];
+      this.usrs = users.map(item => {
         usr =  new AuthUser();
         usr.userName = item.userName;
         usr.password = item.password;
@@ -41,7 +43,7 @@ export class AppComponent {
     usr.password = this.password;
 
     this.service.createUser(usr).subscribe( resp => {
-      if( resp.response === true) {
+      if( resp['response'] === true) {
         this.responseStatus = `Successfully Created User ${usr.userName}!`;
       }
       else{
