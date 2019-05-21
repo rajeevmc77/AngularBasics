@@ -8,6 +8,7 @@
   <label>Password: <input [(ngModel)]="password" placeholder="name" type="password"/> </label>
   </div>
   <div>  <input   type="button" value="Create User" (click)="createUser()"/> </div>
+  <div *ngIf="responseStatus?.length > 0">  {{ responseStatus }} </div>
 </div>
 
 <div>
@@ -18,8 +19,5 @@
   </li>
 </ul>
 </div>
-
-
-*ngIf="Users?.length > 0"
 
 <router-outlet></router-outlet>

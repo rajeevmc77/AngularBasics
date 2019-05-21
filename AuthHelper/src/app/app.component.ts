@@ -12,6 +12,8 @@ export class AppComponent {
   userName = '';
   password = '';
   usrs: AuthUser[];
+  responseStatus: string;
+  responseStatus = '';
 
   constructor(private service: AuthApiService) { }
 
@@ -33,12 +35,19 @@ export class AppComponent {
   }
 
   createUser() {
+    this.responseStatus = ' User Creation Initiated';
     let usr  = new AuthUser();
     usr.userName = this.userName;
     usr.password = this.password;
 
     this.service.createUser(usr).subscribe( resp => {
-      console.log(resp);
+      if( resp.response === true) {
+        this.responseStatus = `Successfully Created User ${usr.userName}!`;
+      }
+      else{
+        this.responseStatus = ` Failed to Create User ${usr.userName} !!!`;
+      }
+    //  console.log(resp);
     //  this.usrs = resp.users.map(item => {
     //     usr =  new AuthUser();
     //     usr.userName = item.userName;
