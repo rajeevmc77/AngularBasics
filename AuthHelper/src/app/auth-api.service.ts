@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+
 import { AuthUser } from './auth-user';
 
 
@@ -16,7 +18,7 @@ export class AuthApiService {
   public createUser(usr: AuthUser){
     return this.httpClient.post(`${this.apiURL}/createUser/`, usr);
   }
-  public verifyUser(usr: AuthUser){
+  public verifyUser(usr: AuthUser) {
     return this.httpClient.post(`${this.apiURL}/verify/`, usr);
   }
 }
