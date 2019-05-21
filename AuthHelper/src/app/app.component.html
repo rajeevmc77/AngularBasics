@@ -7,15 +7,19 @@
   <label>User Name: <input [(ngModel)]="userName" placeholder="name"/> </label>
   <label>Password: <input [(ngModel)]="password" placeholder="name" type="password"/> </label>
   </div>
-  <div>  <input   type="button" value="submit" (click)="submitRequest()"/> </div>
+  <div>  <input   type="button" value="Create User" (click)="createUser()"/> </div>
 </div>
+
 <div>
+<input   type="button" value="List Users" (click)="getUserList()"/>
 <ul >
-  <li *ngFor="let usr of usrs" >
+  <li *ngFor="let usr of usrs"  >
     <span >{{usr.userName}}</span> {{usr.password}}
   </li>
 </ul>
 </div>
 
+
+*ngIf="Users?.length > 0"
 
 <router-outlet></router-outlet>

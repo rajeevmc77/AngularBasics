@@ -16,7 +16,7 @@ export class AuthApiService {
     return this.httpClient.get<AuthUser[]>(`${this.apiURL}/login`);
   }
   public createUser(usr: AuthUser){
-    return this.httpClient.post(`${this.apiURL}/createUser/`, usr);
+    return this.httpClient.post(`${this.apiURL}/login/createUser/`, usr);
   }
   public verifyUser(usr: AuthUser) {
     return this.httpClient.post(`${this.apiURL}/verify/`, usr);
